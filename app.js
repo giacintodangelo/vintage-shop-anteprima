@@ -172,6 +172,80 @@
   fav.href = 'data:image/svg+xml,' + encodeURIComponent(favSvg);
   document.head.appendChild(fav);
 
+  /* ---- Iconografia SVG coerente (sostituisce i simboli unicode) ---- */
+  (function () {
+    function S(inner) {
+      return '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + inner + '</svg>';
+    }
+    var I = {
+      search: S('<circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/>'),
+      cart:   S('<path d="M3 4h2l2.2 11.2a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.8L20 8H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/>'),
+      menu:   S('<path d="M4 7h16M4 12h16M4 17h16"/>'),
+      gem:    S('<path d="M6 3h12l3 5-9 13L3 8z"/><path d="M3 8h18M9 3 6 8l6 13 6-13-3-5"/>'),
+      cash:   S('<rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 10v4M18 10v4"/>'),
+      brush:  S('<path d="M15 5l4 4"/><path d="M17.5 2.5a2.1 2.1 0 0 1 3 3L12 14l-3 .8.8-3z"/><path d="M8.6 12.4C6 13 5 15 4.5 18c3-.5 5-1.5 5.6-4.1z"/>'),
+      tag:    S('<path d="M4 4h7l9 9-7 7-9-9V4z"/><circle cx="8" cy="8" r="1.4"/>'),
+      seal:   S('<path d="M12 2.5l2.4 1.6 2.9-.2.7 2.8 2.3 1.7-1.3 2.6 1.3 2.6-2.3 1.7-.7 2.8-2.9-.2L12 21.5l-2.4-1.6-2.9.2-.7-2.8-2.3-1.7 1.3-2.6-1.3-2.6 2.3-1.7.7-2.8 2.9.2z"/><path d="M9 12l2 2 4-4"/>'),
+      globe:  S('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/>'),
+      cube:   S('<path d="M12 2.5l8.5 4.8v9.4L12 21.5 3.5 16.7V7.3z"/><path d="M3.7 7.3 12 12l8.3-4.7M12 12v9.5"/>'),
+      location:S('<path d="M12 21s6.5-5.8 6.5-10.5a6.5 6.5 0 1 0-13 0C5.5 15.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/>'),
+      phone:  S('<path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/>'),
+      mail:   S('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/>'),
+      clock:  S('<circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/>'),
+      instagram:S('<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>'),
+      facebook:S('<path d="M14.5 8.5H17V5.6h-2.6C12.6 5.6 11 7 11 9.2V11H8.6v3H11v6.4h3V14h2.2l.5-3H14V9.3c0-.5.2-.8.5-.8z"/>'),
+      pinterest:S('<circle cx="12" cy="12" r="9"/><path d="M9.6 19c-.3-1.5-.1-3 .3-4.5l1-4.2c-.3-.5-.4-1.2-.4-1.8 0-1.7 1-3 2.3-3 1.1 0 1.7.8 1.7 1.9 0 1.2-.8 2.9-1.1 4.5-.3 1.2.6 2.2 1.8 2.2 2.2 0 3.6-2.3 3.6-4.9 0-2.6-1.8-4.5-4.7-4.5-3.2 0-5.1 2.2-5.1 4.7 0 .9.3 1.7.8 2.2"/>'),
+      store:  S('<path d="M4 9.5 5.5 4h13L20 9.5M4 9.5v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9M9.5 20v-5h5v5"/><path d="M4 9.5a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/>'),
+      arrowUp:S('<path d="M12 19V5M6 11l6-6 6 6"/>')
+    };
+    function pick(text, map, fb) {
+      text = (text || '').toLowerCase();
+      for (var k in map) { if (text.indexOf(k) >= 0) return map[k]; }
+      return fb;
+    }
+    function txt(el, sel) { var n = el.querySelector(sel); return n ? n.textContent : ''; }
+
+    // Header: cerca / carrello
+    document.querySelectorAll('.icon-btn').forEach(function (b) {
+      var t = (b.getAttribute('title') || '').toLowerCase();
+      if (t.indexOf('cerc') >= 0) b.innerHTML = I.search;
+      else if (t.indexOf('carr') >= 0) {
+        var small = b.querySelector('small');
+        b.innerHTML = I.cart + ' ';
+        if (small) b.appendChild(small);
+      }
+    });
+    document.querySelectorAll('.burger').forEach(function (b) { b.innerHTML = I.menu; });
+
+    // Valori (home)
+    document.querySelectorAll('.value .vi').forEach(function (vi) {
+      var label = txt(vi.parentElement, 'b');
+      vi.innerHTML = pick(label, { 'restauro': I.brush, 'valutazion': I.gem, 'autenticit': I.seal, 'spedizion': I.globe }, I.seal);
+    });
+
+    // Servizi
+    document.querySelectorAll('.service .ic').forEach(function (ic) {
+      var h = txt(ic.parentElement, 'h3');
+      ic.innerHTML = pick(h, { 'valutazion': I.gem, 'acquisto': I.cash, 'ritiro': I.cash, 'restauro': I.brush, 'noleggio': I.tag, 'virtual': I.cube, 'tour': I.cube, 'spedizion': I.globe }, I.seal);
+    });
+
+    // Contatti
+    document.querySelectorAll('.info-item .ic').forEach(function (ic) {
+      var h = txt(ic.parentElement, 'h4');
+      ic.innerHTML = pick(h, { 'indiriz': I.location, 'telefono': I.phone, 'email': I.mail, 'orari': I.clock, 'segui': I.instagram }, I.location);
+    });
+
+    // Footer social
+    document.querySelectorAll('.foot-social a').forEach(function (a) {
+      var t = (a.getAttribute('title') || '').toLowerCase();
+      a.innerHTML = pick(t, { 'insta': I.instagram, 'face': I.facebook, 'pinte': I.pinterest, 'ebay': I.store }, I.store);
+    });
+
+    // Torna su
+    var tt = document.querySelector('.to-top');
+    if (tt) tt.innerHTML = I.arrowUp;
+  })();
+
   /* ---- Upgrade link di categoria del menu (→ catalogo.html?cat=...) ---- */
   var catMap = { 'mobili':'mobili', 'cristalli':'cristalli', 'ceramiche':'ceramiche', 'collezionismo':'collezionismo' };
   document.querySelectorAll('a[href="catalogo.html"]').forEach(function (a) {
