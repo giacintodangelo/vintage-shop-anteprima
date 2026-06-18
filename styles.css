@@ -232,6 +232,15 @@ section.block{padding:84px 0}
 .topbar .oro{animation:pulse 2.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
 
+/* Topbar scorrevole (marquee) — costruita da app.js */
+.topbar.is-marquee{padding:0;overflow:hidden}
+.topbar.is-marquee .marq{overflow:hidden;width:100%}
+.topbar.is-marquee .marq-track{display:inline-flex;align-items:center;white-space:nowrap;padding:9px 0;will-change:transform;animation:marquee 30s linear infinite}
+.topbar.is-marquee .marq:hover .marq-track{animation-play-state:paused}
+.topbar.is-marquee .ti{padding:0 26px;opacity:.85}
+.topbar.is-marquee .sep{color:var(--oro-chiaro);font-size:11px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
 /* Immagine storytelling: parallax leggero gestito via JS (--py) */
 .story .img-wrap img{transition:transform .2s ease-out}
 

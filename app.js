@@ -2,6 +2,24 @@
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---- Topbar scorrevole (marquee continuo) ---- */
+  (function () {
+    var tb = document.querySelector('.topbar');
+    if (!tb || reduce) return;
+    var msgs = [].slice.call(tb.querySelectorAll('.container > span'))
+      .map(function (s) { return s.textContent.trim().replace(/^✦\s*/, ''); })
+      .filter(Boolean);
+    if (!msgs.length) return;
+    var block = msgs.map(function (m) {
+      return '<span class="ti">' + m + '</span><span class="sep">✦</span>';
+    }).join('');
+    tb.innerHTML = '<div class="marq"><div class="marq-track" id="marqTrack">' + block + block + '</div></div>';
+    tb.classList.add('is-marquee');
+    var track = document.getElementById('marqTrack');
+    var blockW = track.scrollWidth / 2;        // larghezza di una copia
+    track.style.animationDuration = Math.max(18, blockW / 70).toFixed(1) + 's'; // ~70px/s
+  })();
+
   /* ---- Reveal allo scroll (auto-applicato, niente classi nell'HTML) ---- */
   var groups = [
     { sel: '.section-head', stagger: 0 },
