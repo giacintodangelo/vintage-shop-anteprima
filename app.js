@@ -22,7 +22,7 @@
 
   /* ---- Hero slideshow (dissolvenza tra le immagini) ---- */
   (function () {
-    var slides = [].slice.call(document.querySelectorAll('.hero-slides img'));
+    var slides = [].slice.call(document.querySelectorAll('.hero-slides .slide'));
     if (slides.length < 2) return;
     var dotsWrap = document.querySelector('.hero-dots');
     var dots = [];
