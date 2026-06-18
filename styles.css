@@ -279,6 +279,17 @@ body.theme-museo .hero-slides .slide img{
 .hero-dots button.on{background:var(--oro);border-color:var(--oro);transform:scale(1.2)}
 @media(prefers-reduced-motion:reduce){ .hero-slides .slide.active img{animation:none} }
 
+/* =========================================================
+   Logo / identità (SVG iniettato da app.js)
+   ========================================================= */
+.brand-logo{height:46px;width:auto;display:block}
+.site-header.scrolled .brand-logo{height:40px;transition:height .4s ease}
+.site-footer .brand-logo{height:56px;margin-bottom:6px}
+.brand-logo .lg-mono{font-family:var(--serif);font-weight:600;font-size:25px;fill:#dac49b}
+.brand-logo .lg-wm{font-family:var(--serif);font-weight:500;font-size:26px;fill:#ece7dd;letter-spacing:3px}
+.brand-logo .lg-sub{font-family:var(--sans);font-weight:400;font-size:7.5px;fill:#b9b2a4;letter-spacing:2px}
+.brand-logo .lg-ring{fill:none;stroke:#c2a875}
+
 /* Immagine storytelling: parallax leggero gestito via JS (--py) */
 .story .img-wrap img{transition:transform .2s ease-out}
 

@@ -146,6 +146,32 @@
     bio.observe(badge);
   }
 
+  /* ---- Logo / identità di marca (SVG inline, eredita i font del sito) ---- */
+  var LOGO =
+    '<svg class="brand-logo" viewBox="0 0 322 64" role="img" aria-label="Vintage Shop">' +
+      '<circle class="lg-ring" cx="32" cy="32" r="29" stroke-width="1.5"/>' +
+      '<circle class="lg-ring" cx="32" cy="32" r="23" stroke-width="0.8" opacity="0.55"/>' +
+      '<text class="lg-mono" x="32" y="41" text-anchor="middle">VS</text>' +
+      '<text class="lg-wm" x="71" y="31">VINTAGE SHOP</text>' +
+      '<text class="lg-sub" x="72" y="47">ANTIQUARIATO · MODERNARIATO · DESIGN</text>' +
+    '</svg>';
+  document.querySelectorAll('a.brand').forEach(function (a) {
+    a.setAttribute('aria-label', 'Vintage Shop — home');
+    a.innerHTML = LOGO;
+  });
+  document.querySelectorAll('.site-footer .name').forEach(function (el) { el.innerHTML = LOGO; });
+
+  // Favicon coordinata (emblema)
+  var favSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' +
+    '<rect width="64" height="64" rx="12" fill="#121009"/>' +
+    '<circle cx="32" cy="32" r="26" fill="none" stroke="#c2a875" stroke-width="2.5"/>' +
+    '<text x="32" y="42" text-anchor="middle" font-family="Georgia,serif" font-weight="600" font-size="27" fill="#dac49b">VS</text></svg>';
+  var fav = document.createElement('link');
+  fav.rel = 'icon';
+  fav.type = 'image/svg+xml';
+  fav.href = 'data:image/svg+xml,' + encodeURIComponent(favSvg);
+  document.head.appendChild(fav);
+
   /* ---- Upgrade link di categoria del menu (→ catalogo.html?cat=...) ---- */
   var catMap = { 'mobili':'mobili', 'cristalli':'cristalli', 'ceramiche':'ceramiche', 'collezionismo':'collezionismo' };
   document.querySelectorAll('a[href="catalogo.html"]').forEach(function (a) {
