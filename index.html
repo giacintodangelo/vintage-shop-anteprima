@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vintage Shop — Antiquariato, Modernariato & Collezionismo</title>
+<meta name="description" content="Vintage Shop: oggetti e mobili di antiquariato, modernariato e design. Restauro artigianale, valutazioni gratuite, spedizione in tutto il mondo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-museo">
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <span><span class="oro">✦</span> Spedizione assicurata in tutto il mondo</span>
+    <span>Valutazioni gratuite</span>
+    <span>Restauro artigianale dal nostro laboratorio</span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="name">Vintage Shop</span>
+      <span class="sub">Antiquariato · Modernariato · Design</span>
+    </a>
+    <nav class="nav">
+      <a href="catalogo.html">Mobili</a>
+      <a href="catalogo.html">Cristalli</a>
+      <a href="catalogo.html">Ceramiche</a>
+      <a href="catalogo.html">Collezionismo</a>
+      <a href="bottega.html">La bottega</a>
+      <a href="contatti.html">Contatti</a>
+    </nav>
+    <div class="header-actions">
+      <button class="lang" title="Sito multilingua (anteprima)"><b>IT</b> / EN</button>
+      <button class="icon-btn" title="Cerca">⌕</button>
+      <button class="icon-btn" title="Carrello">⛬ <small style="font-size:11px">(0)</small></button>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="catalogo.html">Mobili e Arredamento</a>
+    <a href="catalogo.html">Vetri e Cristalli</a>
+    <a href="catalogo.html">Ceramiche</a>
+    <a href="catalogo.html">Collezionismo</a>
+    <a href="bottega.html">La bottega</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <img src="assets/big1.jpg" alt="Pezzi di design e antiquariato">
+  <div class="hero-content">
+    <span class="eyebrow">Dal laboratorio di Paruzzaro</span>
+    <h1>L'arte di <em>collezionare</em> la bellezza</h1>
+    <p>Mobili, cristalli, ceramiche e oggetti d'autore selezionati e restaurati a mano. Ogni pezzo ha una storia — noi la riportiamo a nuova vita.</p>
+    <a href="catalogo.html" class="btn">Esplora la collezione</a>
+  </div>
+</section>
+
+<!-- Valori -->
+<div class="values">
+  <div class="container">
+    <div class="value"><span class="vi">✦</span><div><b>Restauro artigianale</b><small>Laboratorio interno</small></div></div>
+    <div class="value"><span class="vi">❖</span><div><b>Valutazioni gratuite</b><small>Anche a domicilio</small></div></div>
+    <div class="value"><span class="vi">✺</span><div><b>Autenticità garantita</b><small>Pezzi selezionati</small></div></div>
+    <div class="value"><span class="vi">➤</span><div><b>Spedizione mondiale</b><small>Imballo museale</small></div></div>
+  </div>
+</div>
+
+<!-- Categorie -->
+<section class="block" id="categorie">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Le collezioni</span>
+      <h2>Sfoglia per categoria</h2>
+      <p>Una selezione che spazia dal design del Novecento alle arti decorative, fino al collezionismo d'autore.</p>
+    </div>
+    <div class="cats">
+      <a class="cat" href="catalogo.html?cat=mobili">
+        <img src="assets/big1.jpg" alt="Mobili e design">
+        <div class="label"><span>Novecento</span><h3>Mobili & Design</h3></div>
+      </a>
+      <a class="cat" href="catalogo.html?cat=cristalli">
+        <img src="assets/big2.jpg" alt="Vetri e cristalli">
+        <div class="label"><span>Arti della tavola</span><h3>Vetri & Cristalli</h3></div>
+      </a>
+      <a class="cat" href="catalogo.html?cat=ceramiche">
+        <img src="assets/big6.jpg" alt="Ceramiche e collezionismo">
+        <div class="label"><span>Autore</span><h3>Ceramiche & Arte</h3></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Prodotti -->
+<section class="block" id="prodotti" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Selezione del mese</span>
+      <h2>Pezzi in evidenza</h2>
+      <p>Disponibilità limitata: ogni oggetto è unico e parte spesso in pochi giorni.</p>
+    </div>
+    <div class="products" id="featuredGrid"></div>
+    <div class="products" style="display:none">
+
+      <a class="card" href="prodotto.html">
+        <div class="ph"><span class="tag sale">−10%</span><img src="assets/p1.jpg" alt="Set 6 sedie design anni 60"></div>
+        <div class="body">
+          <span class="cat-name">Mobili & Design</span>
+          <h3>Set 6 Sedie Design Anni '60 — Cantilever</h3>
+          <div class="price"><span class="now">€ 792,00</span><span class="was">€ 880,00</span></div>
+          <span class="add">Scopri il pezzo</span>
+        </div>
+      </a>
+
+      <a class="card" href="prodotto.html">
+        <div class="ph"><span class="tag">Autentico</span><img src="assets/p2.jpg" alt="Set 6 calici Toledo Arnolfo di Cambio"></div>
+        <div class="body">
+          <span class="cat-name">Vetri & Cristalli</span>
+          <h3>Set 6 Calici Acqua "Toledo" — Arnolfo di Cambio</h3>
+          <div class="price"><span class="now">€ 216,00</span><span class="was">€ 240,00</span></div>
+          <span class="add">Scopri il pezzo</span>
+        </div>
+      </a>
+
+      <a class="card" href="prodotto.html">
+        <div class="ph"><span class="tag sale">−10%</span><img src="assets/p5.jpg" alt="Medaglia Arnaldo Pomodoro"></div>
+        <div class="body">
+          <span class="cat-name">Collezionismo</span>
+          <h3>Arnaldo Pomodoro — Medaglia Pendente in Bronzo</h3>
+          <div class="price"><span class="now">€ 719,10</span><span class="was">€ 799,00</span></div>
+          <span class="add">Scopri il pezzo</span>
+        </div>
+      </a>
+
+      <a class="card" href="prodotto.html">
+        <div class="ph"><span class="tag">Anni '70</span><img src="assets/p6.jpg" alt="Vaso scultura Bertoncello"></div>
+        <div class="body">
+          <span class="cat-name">Ceramiche</span>
+          <h3>Vaso Scultura in Ceramica Bertoncello 864</h3>
+          <div class="price"><span class="now">€ 216,00</span><span class="was">€ 240,00</span></div>
+          <span class="add">Scopri il pezzo</span>
+        </div>
+      </a>
+
+      <a class="card" href="prodotto.html">
+        <div class="ph"><span class="tag sale">−10%</span><img src="assets/p3.jpg" alt="Set 6 calici vino Toledo 2"></div>
+        <div class="body">
+          <span class="cat-name">Vetri & Cristalli</span>
+          <h3>Set 6 Calici Vino "Toledo 2" — Arnolfo di Cambio</h3>
+          <div class="price"><span class="now">€ 207,00</span><span class="was">€ 230,00</span></div>
+          <span class="add">Scopri il pezzo</span>
+        </div>
+      </a>
+
+      <a class="card" href="prodotto.html">
+        <div class="ph"><span class="tag">Cristallo</span><img src="assets/p7.jpg" alt="Set 4 flut Valdemossa"></div>
+        <div class="body">
+          <span class="cat-name">Vetri & Cristalli</span>
+          <h3>Set 4 Flûte Cristallo "Valdemossa" — Taglio 1000</h3>
+          <div class="price"><span class="now">€ 144,00</span><span class="was">€ 160,00</span></div>
+          <span class="add">Scopri il pezzo</span>
+        </div>
+      </a>
+
+      <a class="card" href="prodotto.html">
+        <div class="ph"><span class="tag">Autentico</span><img src="assets/p4.jpg" alt="Set 6 calici acqua Toledo 1"></div>
+        <div class="body">
+          <span class="cat-name">Vetri & Cristalli</span>
+          <h3>Set 6 Calici Acqua "Toledo 1" — Arnolfo di Cambio</h3>
+          <div class="price"><span class="now">€ 216,00</span><span class="was">€ 240,00</span></div>
+          <span class="add">Scopri il pezzo</span>
+        </div>
+      </a>
+
+      <a class="card" href="prodotto.html">
+        <div class="ph"><span class="tag sale">−10%</span><img src="assets/p8.jpg" alt="Set 6 flut Valdemossa"></div>
+        <div class="body">
+          <span class="cat-name">Vetri & Cristalli</span>
+          <h3>Set 6 Flûte Cristallo "Valdemossa" — Taglio 1000</h3>
+          <div class="price"><span class="now">€ 216,00</span><span class="was">€ 240,00</span></div>
+          <span class="add">Scopri il pezzo</span>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="catalogo.html" class="btn btn-dark">Vedi tutto il catalogo</a>
+    </div>
+  </div>
+</section>
+
+<!-- Storytelling -->
+<section class="block story" id="bottega">
+  <div class="container">
+    <div class="txt">
+      <span class="eyebrow">La bottega</span>
+      <h2>Dal restauro alla nuova vita di ogni oggetto</h2>
+      <p>Da Paruzzaro, nel cuore del Piemonte, selezioniamo mobili e oggetti d'epoca e li riportiamo al loro splendore con un restauro artigianale e rispettoso dei materiali originali.</p>
+      <p>Valutazioni gratuite, ritiro a domicilio, restauro su misura e noleggio per produzioni cinematografiche e fotografiche: il nostro lavoro è custodire la bellezza e farla viaggiare.</p>
+      <a href="contatti.html" class="btn btn-dark">Prenota una valutazione</a>
+    </div>
+    <div class="img-wrap">
+      <img src="assets/big6.jpg" alt="Oggetto restaurato">
+      <div class="badge"><b>30+</b><span>anni di mestiere</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Social / global -->
+<section class="block social">
+  <div class="container">
+    <span class="eyebrow">Il negozio diventa globale</span>
+    <h2>Seguici e scopri ogni nuovo arrivo</h2>
+    <p class="lead">Ogni settimana raccontiamo i nostri pezzi su Instagram, Facebook e Pinterest — contenuti pubblicati e curati con il nostro nuovo sistema di gestione automatizzata dei social.</p>
+    <div class="ig-grid">
+      <div class="ig"><img src="assets/p2.jpg" alt=""></div>
+      <div class="ig"><img src="assets/p6.jpg" alt=""></div>
+      <div class="ig"><img src="assets/p1.jpg" alt=""></div>
+      <div class="ig"><img src="assets/p5.jpg" alt=""></div>
+      <div class="ig"><img src="assets/p7.jpg" alt=""></div>
+      <div class="ig"><img src="assets/p3.jpg" alt=""></div>
+    </div>
+    <div class="handle">@vintageshop · #antiquariato #modernariato #designvintage</div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="block news">
+  <div class="container">
+    <span class="eyebrow">Resta aggiornato</span>
+    <h2>I nuovi arrivi, prima di tutti</h2>
+    <p>Iscriviti per ricevere in anteprima i pezzi più ricercati.</p>
+    <form onsubmit="return false">
+      <input type="email" placeholder="La tua email" aria-label="Email">
+      <button type="submit">Iscriviti</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer" id="contatti">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="name">Vintage Shop</div>
+        <p style="margin-top:16px;max-width:280px">Antiquariato, modernariato e collezionismo. Restauro artigianale e selezione d'autore dal 1990.</p>
+        <div class="foot-social">
+          <a href="#" title="Instagram">⌾</a>
+          <a href="#" title="Facebook">ⓕ</a>
+          <a href="#" title="Pinterest">ⓟ</a>
+          <a href="#" title="eBay">⛬</a>
+        </div>
+      </div>
+      <div>
+        <h4>Collezioni</h4>
+        <ul>
+          <li><a href="catalogo.html">Mobili e Arredamento</a></li>
+          <li><a href="catalogo.html">Vetri e Cristalli</a></li>
+          <li><a href="catalogo.html">Ceramiche e Porcellane</a></li>
+          <li><a href="catalogo.html">Collezionismo</a></li>
+          <li><a href="catalogo.html">Quadri e Sculture</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Servizi</h4>
+        <ul>
+          <li><a href="bottega.html">Restauro artigianale</a></li>
+          <li><a href="bottega.html">Valutazioni gratuite</a></li>
+          <li><a href="bottega.html">Ritiro a domicilio</a></li>
+          <li><a href="bottega.html">Noleggio per produzioni</a></li>
+          <li><a href="bottega.html">Virtual tour 3D</a></li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h4>Contatti</h4>
+        <ul>
+          <li><b>Vintage Shop</b></li>
+          <li>Via Borgomanero, 6/b<br>28040 Paruzzaro (NO)</li>
+          <li><a href="tel:+390322534 40">+39 0322 53440</a></li>
+          <li><a href="mailto:info@vintage-shop.it">info@vintage-shop.it</a></li>
+          <li style="margin-top:8px">Lun–Ven 9.30–12.30 / 14.30–19.00<br>Sab 10.00–12.00 / 15.00–19.00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>© 2026 Vintage Shop — P.IVA 00000000000</span>
+      <span>Anteprima di restyling · realizzata per la presentazione</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  // Pezzi in evidenza: 2 per categoria, dai dati reali
+  var featured = [];
+  ['mobili','cristalli','ceramiche','collezionismo'].forEach(function(c){
+    featured = featured.concat(VS.byCat(c).slice(0,2));
+  });
+  document.getElementById('featuredGrid').innerHTML = featured.map(function(p){ return VS.cardHTML(p); }).join('');
+</script>
+<script src="app.js"></script>
+</body>
+</html>

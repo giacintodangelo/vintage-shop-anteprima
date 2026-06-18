@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogo — Vintage Shop</title>
+<meta name="description" content="Catalogo Vintage Shop: mobili, cristalli, ceramiche e collezionismo d'autore. Antiquariato e modernariato selezionato e restaurato.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-museo">
+
+<div class="topbar">
+  <div class="container">
+    <span><span class="oro">✦</span> Spedizione assicurata in tutto il mondo</span>
+    <span>Valutazioni gratuite</span>
+    <span>Restauro artigianale dal nostro laboratorio</span>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="name">Vintage Shop</span>
+      <span class="sub">Antiquariato · Modernariato · Design</span>
+    </a>
+    <nav class="nav">
+      <a href="catalogo.html">Mobili</a>
+      <a href="catalogo.html">Cristalli</a>
+      <a href="catalogo.html">Ceramiche</a>
+      <a href="catalogo.html">Collezionismo</a>
+      <a href="bottega.html">La bottega</a>
+      <a href="contatti.html">Contatti</a>
+    </nav>
+    <div class="header-actions">
+      <button class="lang" title="Sito multilingua (anteprima)"><b>IT</b> / EN</button>
+      <button class="icon-btn" title="Cerca">⌕</button>
+      <button class="icon-btn" title="Carrello">⛬ <small style="font-size:11px">(0)</small></button>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="catalogo.html">Mobili</a>
+    <a href="catalogo.html">Cristalli</a>
+    <a href="catalogo.html">Ceramiche</a>
+    <a href="catalogo.html">Collezionismo</a>
+    <a href="bottega.html">La bottega</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+</header>
+
+<!-- Page hero -->
+<section class="page-hero">
+  <div class="container inner">
+    <div class="crumbs"><a href="index.html">Home</a> &nbsp;/&nbsp; <span id="crumbCat">Catalogo</span></div>
+    <h1 id="catTitle">Il catalogo</h1>
+    <p id="catIntro">Una selezione viva di mobili, arti decorative e oggetti d'autore. Ogni pezzo è unico, restaurato e pronto a partire.</p>
+  </div>
+</section>
+
+<div class="container">
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <span class="count" id="count">—</span>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button class="filter-toggle" id="filterToggle">Filtri</button>
+      <select id="sort" aria-label="Ordina">
+        <option value="default">Ordina · Novità</option>
+        <option value="asc">Prezzo crescente</option>
+        <option value="desc">Prezzo decrescente</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Catalogo -->
+  <div class="catalog">
+    <aside class="filters" id="filters">
+      <div class="filter-group">
+        <h4>Categorie</h4>
+        <div id="catLinks"></div>
+      </div>
+      <div class="filter-group">
+        <h4>Fascia di prezzo</h4>
+        <input type="range" min="0" max="7000" value="7000" aria-label="Prezzo massimo">
+        <div class="range"><span>€ 0</span><span>€ 7.000+</span></div>
+      </div>
+      <div class="filter-group">
+        <h4>Epoca</h4>
+        <div class="chip-row">
+          <span class="chip">Ottocento</span>
+          <span class="chip on">Primo '900</span>
+          <span class="chip on">Anni 50–70</span>
+          <span class="chip">Contemporaneo</span>
+        </div>
+      </div>
+      <div class="filter-group">
+        <h4>Disponibilità</h4>
+        <label><input type="checkbox" checked> Disponibile</label>
+        <label><input type="checkbox"> In arrivo</label>
+      </div>
+    </aside>
+
+    <div>
+      <div class="products" id="grid"></div>
+      <div class="pagination">
+        <a class="on" href="#">1</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="name">Vintage Shop</div>
+        <p style="margin-top:16px;max-width:280px">Antiquariato, modernariato e collezionismo. Restauro artigianale e selezione d'autore.</p>
+        <div class="foot-social"><a href="#" title="Instagram">⌾</a><a href="#" title="Facebook">ⓕ</a><a href="#" title="Pinterest">ⓟ</a><a href="#" title="eBay">⛬</a></div>
+      </div>
+      <div>
+        <h4>Collezioni</h4>
+        <ul>
+          <li><a href="catalogo.html?cat=mobili">Mobili e Arredamento</a></li>
+          <li><a href="catalogo.html?cat=cristalli">Vetri e Cristalli</a></li>
+          <li><a href="catalogo.html?cat=ceramiche">Ceramiche e Porcellane</a></li>
+          <li><a href="catalogo.html?cat=collezionismo">Collezionismo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Servizi</h4>
+        <ul>
+          <li><a href="bottega.html">Restauro artigianale</a></li>
+          <li><a href="bottega.html">Valutazioni gratuite</a></li>
+          <li><a href="bottega.html">Ritiro a domicilio</a></li>
+          <li><a href="bottega.html">Noleggio per produzioni</a></li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h4>Contatti</h4>
+        <ul>
+          <li><b>Vintage Shop</b></li>
+          <li>Via Borgomanero, 6/b<br>28040 Paruzzaro (NO)</li>
+          <li><a href="tel:+390322053440">+39 0322 53440</a></li>
+          <li><a href="mailto:info@vintage-shop.it">info@vintage-shop.it</a></li>
+          <li style="margin-top:8px">Lun–Ven 9.30–12.30 / 14.30–19.00<br>Sab 10.00–12.00 / 15.00–19.00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>© 2026 Vintage Shop — P.IVA 00000000000</span>
+      <span>Anteprima di restyling · realizzata per la presentazione</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  var cat = VS.param('cat');
+  var intro = {
+    mobili:'Mobili e arredi del Novecento e d\'epoca: design, modernariato e pezzi unici restaurati a mano.',
+    cristalli:'Cristalli molati, calici e flûte d\'autore: arti della tavola dalle migliori vetrerie italiane.',
+    ceramiche:'Ceramiche e porcellane da collezione: dal modernariato firmato alle rarità Art Nouveau.',
+    collezionismo:'Sculture, bronzi e oggetti rari per veri collezionisti e amanti del bello.'
+  };
+  // Titolo / intro / breadcrumb
+  if (cat && VS_CATS[cat]) {
+    document.getElementById('catTitle').textContent = VS_CATS[cat];
+    document.getElementById('crumbCat').textContent = VS_CATS[cat];
+    document.getElementById('catIntro').textContent = intro[cat];
+    document.title = VS_CATS[cat] + ' — Vintage Shop';
+  }
+  // Link categorie nella sidebar (con conteggi e stato attivo)
+  var cl = document.getElementById('catLinks');
+  function catRow(slug, label) {
+    var n = VS.byCat(slug).length;
+    var active = (slug === cat || (!slug && !cat)) ? ' style="color:var(--oro)"' : '';
+    return '<a href="catalogo.html' + (slug ? '?cat=' + slug : '') + '"' + active +
+           ' style="display:flex;justify-content:space-between;padding:7px 0;font-size:14px">' +
+           '<span>' + label + '</span><span style="color:var(--grigio)">' + n + '</span></a>';
+  }
+  var html = catRow('', 'Tutte le categorie');
+  Object.keys(VS_CATS).forEach(function (s) { html += catRow(s, VS_CATS[s]); });
+  cl.innerHTML = html;
+
+  // Griglia
+  var items = VS.byCat(cat);
+  function render(list) {
+    document.getElementById('grid').innerHTML = list.map(function (p) { return VS.cardHTML(p); }).join('');
+    document.getElementById('count').textContent = list.length + (list.length === 1 ? ' pezzo' : ' pezzi') + ' · selezione aggiornata oggi';
+  }
+  render(items);
+
+  // Ordinamento
+  document.getElementById('sort').addEventListener('change', function () {
+    var v = this.value, l = items.slice();
+    if (v === 'asc') l.sort(function (a, b) { return a.price - b.price; });
+    if (v === 'desc') l.sort(function (a, b) { return b.price - a.price; });
+    render(l);
+  });
+
+  // Filtri mobile + chip
+  document.getElementById('filterToggle').addEventListener('click', function () {
+    document.getElementById('filters').classList.toggle('open');
+  });
+  document.querySelectorAll('.chip').forEach(function (c) {
+    c.addEventListener('click', function () { c.classList.toggle('on'); });
+  });
+</script>
+<script src="app.js"></script>
+</body>
+</html>
