@@ -20,6 +20,38 @@
     track.style.animationDuration = Math.max(18, blockW / 70).toFixed(1) + 's'; // ~70px/s
   })();
 
+  /* ---- Hero slideshow (dissolvenza tra le immagini) ---- */
+  (function () {
+    var slides = [].slice.call(document.querySelectorAll('.hero-slides img'));
+    if (slides.length < 2) return;
+    var dotsWrap = document.querySelector('.hero-dots');
+    var dots = [];
+    var i = 0, timer = null;
+
+    function go(n) {
+      slides[i].classList.remove('active');
+      if (dots[i]) dots[i].classList.remove('on');
+      i = (n + slides.length) % slides.length;
+      slides[i].classList.add('active');
+      if (dots[i]) dots[i].classList.add('on');
+    }
+    function restart() {
+      if (timer) clearInterval(timer);
+      if (!reduce) timer = setInterval(function () { go(i + 1); }, 4800);
+    }
+    if (dotsWrap) {
+      slides.forEach(function (_, idx) {
+        var b = document.createElement('button');
+        b.setAttribute('aria-label', 'Vai all\'immagine ' + (idx + 1));
+        if (idx === 0) b.classList.add('on');
+        b.addEventListener('click', function () { go(idx); restart(); });
+        dotsWrap.appendChild(b);
+        dots.push(b);
+      });
+    }
+    restart();
+  })();
+
   /* ---- Reveal allo scroll (auto-applicato, niente classi nell'HTML) ---- */
   var groups = [
     { sel: '.section-head', stagger: 0 },

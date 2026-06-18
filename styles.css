@@ -258,6 +258,22 @@ section.block{padding:84px 0}
 /* Griglia servizi a 4 colonne (solo desktop ampio) */
 @media(min-width:981px){ .services.s4{grid-template-columns:repeat(4,1fr)} }
 
+/* =========================================================
+   Hero slideshow (immagini che cambiano in dissolvenza)
+   ========================================================= */
+.hero-slides{position:absolute;inset:0}
+body.theme-museo .hero-slides img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.5s ease;
+  animation:heroZoom 18s ease-in-out infinite alternate;
+}
+body.theme-museo .hero-slides img.active{opacity:.55}
+@keyframes heroZoom{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+.hero-dots{position:absolute;left:0;right:0;bottom:24px;z-index:3;display:flex;gap:10px;justify-content:center}
+.hero-dots button{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:transparent;cursor:pointer;padding:0;transition:.3s}
+.hero-dots button.on{background:var(--oro);border-color:var(--oro);transform:scale(1.2)}
+@media(prefers-reduced-motion:reduce){ body.theme-museo .hero-slides img{animation:none} }
+
 /* Immagine storytelling: parallax leggero gestito via JS (--py) */
 .story .img-wrap img{transition:transform .2s ease-out}
 
