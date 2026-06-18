@@ -241,6 +241,23 @@ section.block{padding:84px 0}
 .topbar.is-marquee .sep{color:var(--oro-chiaro);font-size:11px}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+/* =========================================================
+   Immagini con angoli arrotondati (in armonia col tema)
+   ========================================================= */
+.card{border-radius:14px;overflow:hidden}
+.cat{border-radius:16px}
+.story .img-wrap img{border-radius:16px}
+.gallery .main{border-radius:16px}
+.thumbs button{border-radius:9px}
+.ig-grid .ig{border-radius:12px}
+.service{border-radius:16px}
+.contact-form{border-radius:16px}
+.map{border-radius:16px}
+.hero{border-radius:0 0 22px 22px}
+.story .badge{border-radius:4px}
+/* Griglia servizi a 4 colonne (solo desktop ampio) */
+@media(min-width:981px){ .services.s4{grid-template-columns:repeat(4,1fr)} }
+
 /* Immagine storytelling: parallax leggero gestito via JS (--py) */
 .story .img-wrap img{transition:transform .2s ease-out}
 
