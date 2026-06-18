@@ -302,6 +302,26 @@ body.theme-museo .hero-slides .slide img{
 .foot-social a .icon{width:16px;height:16px}
 .to-top .icon{width:18px;height:18px}
 
+/* =========================================================
+   Trattamento immagini prodotto omogeneo (look "da gallery")
+   Bordi sfumati nel piedistallo + ombra morbida coerente.
+   ========================================================= */
+.card .ph img,
+.gallery .main img{
+  -webkit-mask-image:radial-gradient(closest-side at 50% 48%,#000 78%,transparent 100%);
+          mask-image:radial-gradient(closest-side at 50% 48%,#000 78%,transparent 100%);
+  filter:drop-shadow(0 12px 16px rgba(0,0,0,.18)) saturate(1.03) contrast(1.02);
+}
+.card .ph img{padding:18px}
+.gallery .main img{padding:36px}
+/* base d'appoggio morbida sotto l'oggetto (effetto "posato") */
+.card .ph::after{
+  content:"";position:absolute;left:24%;right:24%;bottom:9%;height:10px;z-index:1;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.22),transparent 70%);
+  filter:blur(2px);pointer-events:none;
+}
+.card .ph img{position:relative;z-index:2}
+
 /* Immagine storytelling: parallax leggero gestito via JS (--py) */
 .story .img-wrap img{transition:transform .2s ease-out}
 
