@@ -278,4 +278,27 @@
       a.addEventListener('click', function () { mobileNav.classList.remove('open'); });
     });
   }
+
+  /* ---- Transizione morbida tra le pagine (dissolvenza in uscita) ---- */
+  if (!reduce) {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href || href.charAt(0) === '#' || a.target === '_blank' ||
+          /^(mailto:|tel:|javascript:)/i.test(href) || a.hasAttribute('download')) return;
+      var url;
+      try { url = new URL(a.href, location.href); } catch (err) { return; }
+      if (url.origin !== location.origin) return;
+      // link a un'ancora della stessa pagina → comportamento normale
+      if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
+      e.preventDefault();
+      document.body.classList.add('page-leaving');
+      setTimeout(function () { location.href = a.href; }, 280);
+    });
+    // ripristina lo stato tornando indietro dalla cache del browser
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) document.body.classList.remove('page-leaving');
+    });
+  }
 })();

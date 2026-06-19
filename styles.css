@@ -407,6 +407,43 @@ section.block{padding:var(--section-y) 0}
 @media(max-width:980px){ .quotes,.stories{grid-template-columns:1fr 1fr} }
 @media(max-width:560px){ .quotes,.stories{grid-template-columns:1fr} }
 
+/* =========================================================
+   Micro-interazioni & transizione di pagina
+   ========================================================= */
+/* Transizione di pagina: solo opacità (non rompe header sticky / torna-su fixed) */
+body{animation:pageFade .5s ease both}
+@keyframes pageFade{from{opacity:0}to{opacity:1}}
+body.page-leaving{opacity:0;transition:opacity .26s ease;animation:none}
+
+/* Riflesso elegante sui bottoni */
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.16),transparent);transform:skewX(-18deg);transition:left .6s ease}
+.btn:hover::after{left:130%}
+
+/* Freccia che scorre sui link "Scopri / Leggi" */
+.card .add,.story-card .more{position:relative;padding-right:20px}
+.card .add::after,.story-card .more::after{content:"→";position:absolute;right:0;top:0;opacity:.85;transition:transform .3s ease}
+.card:hover .add::after,.story-card:hover .more::after{transform:translateX(5px)}
+
+/* Hover rifiniti */
+.icon-btn{transition:color .25s ease,transform .25s ease}
+.icon-btn:hover{color:var(--oro-chiaro);transform:translateY(-1px)}
+.lang{transition:border-color .25s ease,color .25s ease}
+.lang:hover{border-color:var(--oro)}
+.quote{transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.quote:hover{transform:translateY(-4px);border-color:var(--oro);box-shadow:var(--ombra)}
+.faq-q{transition:color .25s ease}
+.faq-q:hover{color:var(--oro-chiaro)}
+.foot-social a{transition:border-color .25s ease,color .25s ease,transform .25s ease}
+.foot-social a:hover{transform:translateY(-2px)}
+
+@media(prefers-reduced-motion:reduce){
+  body{animation:none}
+  body.page-leaving{transition:none}
+  .btn::after{display:none}
+}
+
 /* Immagine storytelling: parallax leggero gestito via JS (--py) */
 .story .img-wrap img{transition:transform .2s ease-out}
 
