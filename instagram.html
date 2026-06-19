@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@vintageshop — Anteprima Instagram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",-apple-system,system-ui,sans-serif;
+  --ig:#262626;--ig-sub:#737373;--line:#dbdbdb;--oro:#a8884e;--oro2:#c2a875;--dark:#15130f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:#fafafa;color:var(--ig)}
+a{color:inherit;text-decoration:none}
+img{display:block}
+
+/* barra superiore stile IG */
+.ig-nav{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line)}
+.ig-nav .in{max-width:975px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 20px}
+.ig-logo{font-family:"Cormorant Garamond",cursive,serif;font-size:26px;font-weight:600;font-style:italic;letter-spacing:.5px}
+.ig-search{background:#efefef;border:none;border-radius:9px;padding:8px 16px;width:240px;font-family:var(--sans);font-size:14px;color:#555}
+.ig-icons{display:flex;gap:18px;color:#262626;font-size:20px}
+@media(max-width:680px){.ig-search{display:none}}
+
+.wrap{max-width:935px;margin:0 auto;padding:30px 20px 60px}
+
+/* header profilo */
+.profile{display:flex;gap:clamp(24px,7vw,90px);align-items:center;padding-bottom:36px;border-bottom:1px solid var(--line)}
+.avatar-ring{flex:none;width:150px;height:150px;border-radius:50%;padding:4px;
+  background:conic-gradient(from 30deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)}
+.avatar{width:100%;height:100%;border-radius:50%;background:var(--dark);border:3px solid #fff;display:flex;align-items:center;justify-content:center}
+.avatar svg{width:96px;height:96px}
+.pinfo{flex:1;min-width:0}
+.prow1{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.uname{font-size:21px;font-weight:400;display:flex;align-items:center;gap:7px}
+.verified{color:#3897f0;font-size:17px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;border:none;border-radius:9px;padding:8px 18px;cursor:pointer}
+.btn.follow{background:#0095f6;color:#fff}
+.btn.msg{background:#efefef;color:#262626}
+.btn.ico{background:#efefef;color:#262626;padding:8px 12px}
+.stats{display:flex;gap:40px;margin-bottom:18px;font-size:16px}
+.stats b{font-weight:600}
+.stats span{color:var(--ig-sub)}
+.bio{font-size:15px;line-height:1.5}
+.bio .name{font-weight:600}
+.bio .link{color:#00376b;font-weight:600}
+
+/* storie in evidenza */
+.highlights{display:flex;gap:28px;padding:30px 4px 10px;overflow-x:auto}
+.hl{flex:none;width:88px;text-align:center;cursor:pointer}
+.hl .ring{width:88px;height:88px;border-radius:50%;padding:3px;border:1px solid var(--line);background:#fff}
+.hl .ring .in{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--dark);display:flex;align-items:center;justify-content:center}
+.hl .ring img{width:100%;height:100%;object-fit:cover}
+.hl .ring .em{font-family:var(--serif);font-size:30px;color:var(--oro2)}
+.hl span{display:block;margin-top:8px;font-size:12.5px;color:#262626;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* tab */
+.tabs{display:flex;justify-content:center;gap:60px;border-top:1px solid var(--line);margin-top:14px}
+.tab{display:flex;align-items:center;gap:7px;padding:18px 0;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--ig-sub);font-weight:600;border-top:1px solid transparent;margin-top:-1px}
+.tab.on{color:#262626;border-top-color:#262626}
+
+/* griglia post */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.post{position:relative;aspect-ratio:1/1;overflow:hidden;background:#fff;cursor:pointer}
+.post>img{width:100%;height:100%;object-fit:cover}
+.post.pad>img{object-fit:contain;padding:10%;background:#fff}
+.post .ov{position:absolute;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;gap:26px;color:#fff;font-weight:600;opacity:0;transition:opacity .25s}
+.post:hover .ov{opacity:1}
+.post .ov span{display:flex;align-items:center;gap:7px;font-size:16px}
+/* post grafici brandizzati */
+.post.graphic{background:radial-gradient(circle at 50% 38%,#1f1c17,#0f0e0b);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;color:#ece7dd}
+.post.graphic .eb{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--oro2);margin-bottom:10px}
+.post.graphic .t{font-family:var(--serif);font-size:clamp(20px,2.4vw,27px);line-height:1.18;font-weight:500}
+.post.graphic .t em{font-style:italic;color:var(--oro2)}
+.post.graphic .vs{font-family:var(--serif);font-size:13px;letter-spacing:3px;color:#8a8275;margin-top:14px}
+
+.note{max-width:935px;margin:0 auto;padding:0 20px 60px;color:var(--ig-sub);font-size:13px;text-align:center}
+
+@media(max-width:735px){
+  .profile{gap:24px}
+  .avatar-ring{width:90px;height:90px}.avatar svg{width:58px;height:58px}
+  .uname{font-size:18px}
+  .stats{gap:22px;font-size:14px;justify-content:space-around}
+  .grid{gap:2px}
+  .post .ov{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="ig-nav">
+  <div class="in">
+    <div class="ig-logo">Instagram</div>
+    <input class="ig-search" placeholder="Cerca" disabled>
+    <div class="ig-icons">♡ &nbsp; ✈ &nbsp; ＋ &nbsp; ☰</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- Header profilo -->
+  <div class="profile">
+    <div class="avatar-ring">
+      <div class="avatar">
+        <svg viewBox="0 0 64 64" role="img" aria-label="Vintage Shop">
+          <circle cx="32" cy="32" r="27" fill="none" stroke="#c2a875" stroke-width="2"/>
+          <circle cx="32" cy="32" r="22" fill="none" stroke="#c2a875" stroke-width="1" opacity="0.5"/>
+          <text x="32" y="41" text-anchor="middle" font-family="Cormorant Garamond,serif" font-weight="600" font-size="24" fill="#dac49b">VS</text>
+        </svg>
+      </div>
+    </div>
+    <div class="pinfo">
+      <div class="prow1">
+        <div class="uname">vintageshop <span class="verified">✔</span></div>
+        <button class="btn follow">Segui</button>
+        <button class="btn msg">Messaggio</button>
+        <button class="btn ico">▾</button>
+      </div>
+      <div class="stats">
+        <div><b>1.248</b> <span>post</span></div>
+        <div><b>18,4 mila</b> <span>follower</span></div>
+        <div><b>312</b> <span>seguiti</span></div>
+      </div>
+      <div class="bio">
+        <div class="name">Vintage Shop · Antiquariato & Design</div>
+        🏛️ Antiquariato · Modernariato · Design<br>
+        ✦ Restauro artigianale — riconoscimento Eccellenza Artigiana<br>
+        📍 Paruzzaro (NO) · Spedizioni in tutto il mondo<br>
+        <span class="link">vintage-shop.it</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Storie in evidenza -->
+  <div class="highlights">
+    <div class="hl"><div class="ring"><div class="in"><span class="em">✦</span></div></div><span>Novità</span></div>
+    <div class="hl"><div class="ring"><div class="in"><img src="assets/p1.jpg" alt=""></div></div><span>Restauri</span></div>
+    <div class="hl"><div class="ring"><div class="in"><img src="assets/big2.jpg" alt=""></div></div><span>Cristalli</span></div>
+    <div class="hl"><div class="ring"><div class="in"><img src="assets/m_camino.jpg" alt=""></div></div><span>Mobili</span></div>
+    <div class="hl"><div class="ring"><div class="in"><img src="assets/big6.jpg" alt=""></div></div><span>Ceramiche</span></div>
+    <div class="hl"><div class="ring"><div class="in"><img src="assets/col_vittoria.jpg" alt=""></div></div><span>Bottega</span></div>
+    <div class="hl"><div class="ring"><div class="in"><span class="em">➤</span></div></div><span>Spedizioni</span></div>
+  </div>
+
+  <!-- Tab -->
+  <div class="tabs">
+    <div class="tab on">▦ Post</div>
+    <div class="tab">▷ Reels</div>
+    <div class="tab">⌖ Taggati</div>
+  </div>
+
+  <!-- Griglia post -->
+  <div class="grid">
+    <div class="post pad"><img src="assets/col_vittoria.jpg" alt=""><div class="ov"><span>♥ 842</span><span>💬 37</span></div></div>
+    <div class="post graphic"><div class="eb">Storie degli oggetti</div><div class="t">Arnolfo di Cambio<br><em>il cristallo icona</em></div><div class="vs">VINTAGE SHOP</div></div>
+    <div class="post pad"><img src="assets/big6.jpg" alt=""><div class="ov"><span>♥ 671</span><span>💬 22</span></div></div>
+
+    <div class="post pad"><img src="assets/m_camino.jpg" alt=""><div class="ov"><span>♥ 1.204</span><span>💬 58</span></div></div>
+    <div class="post graphic"><div class="eb">Nuovo arrivo</div><div class="t"><em>Set 6 calici</em><br>Toledo · anni '70</div><div class="vs">VINTAGE SHOP</div></div>
+    <div class="post pad"><img src="assets/big2.jpg" alt=""><div class="ov"><span>♥ 533</span><span>💬 19</span></div></div>
+
+    <div class="post pad"><img src="assets/m_specchio.jpg" alt=""><div class="ov"><span>♥ 1.910</span><span>💬 84</span></div></div>
+    <div class="post graphic"><div class="t">"La bellezza non<br>invecchia, <em>si restaura</em>."</div><div class="vs">VINTAGE SHOP</div></div>
+    <div class="post pad"><img src="assets/big5.jpg" alt=""><div class="ov"><span>♥ 488</span><span>💬 26</span></div></div>
+
+    <div class="post pad"><img src="assets/c_chamaleon.jpg" alt=""><div class="ov"><span>♥ 952</span><span>💬 41</span></div></div>
+    <div class="post pad"><img src="assets/big1.jpg" alt=""><div class="ov"><span>♥ 776</span><span>💬 33</span></div></div>
+    <div class="post graphic"><div class="eb">Servizi</div><div class="t"><em>Valutazioni</em><br>gratuite</div><div class="vs">📍 Paruzzaro (NO)</div></div>
+  </div>
+</div>
+
+<div class="note">Anteprima dimostrativa del profilo Instagram di Vintage Shop · immagini dei prodotti reali, numeri e contenuti illustrativi.</div>
+
+</body>
+</html>
