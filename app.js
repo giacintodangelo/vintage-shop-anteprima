@@ -279,8 +279,12 @@
     });
   }
 
-  /* ---- Transizione morbida tra le pagine (dissolvenza in uscita) ---- */
+  /* ---- Transizione morbida tra le pagine (velo scuro in uscita) ---- */
   if (!reduce) {
+    var veil = document.createElement('div');
+    veil.className = 'page-veil';
+    veil.innerHTML = '<span class="pv-mark">VS</span>';
+    document.body.appendChild(veil);
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a');
       if (!a) return;
@@ -293,12 +297,12 @@
       // link a un'ancora della stessa pagina → comportamento normale
       if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
       e.preventDefault();
-      document.body.classList.add('page-leaving');
-      setTimeout(function () { location.href = a.href; }, 280);
+      veil.classList.add('show');
+      setTimeout(function () { location.href = a.href; }, 430);
     });
     // ripristina lo stato tornando indietro dalla cache del browser
     window.addEventListener('pageshow', function (e) {
-      if (e.persisted) document.body.classList.remove('page-leaving');
+      if (e.persisted) veil.classList.remove('show');
     });
   }
 })();

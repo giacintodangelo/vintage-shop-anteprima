@@ -410,10 +410,15 @@ section.block{padding:var(--section-y) 0}
 /* =========================================================
    Micro-interazioni & transizione di pagina
    ========================================================= */
-/* Transizione di pagina: solo opacità (non rompe header sticky / torna-su fixed) */
-body{animation:pageFade .5s ease both}
+/* Transizione di pagina: dissolvenza in entrata + velo scuro in uscita */
+body{animation:pageFade .55s ease both}
 @keyframes pageFade{from{opacity:0}to{opacity:1}}
-body.page-leaving{opacity:0;transition:opacity .26s ease;animation:none}
+.page-veil{position:fixed;inset:0;z-index:300;opacity:0;pointer-events:none;transition:opacity .42s ease;
+  background:radial-gradient(circle at 50% 45%,#1b1813,#0b0a08);display:flex;align-items:center;justify-content:center}
+.page-veil.show{opacity:1;pointer-events:auto}
+.page-veil .pv-mark{font-family:var(--serif);font-size:34px;letter-spacing:7px;color:#dac49b;
+  opacity:0;transform:scale(.88);transition:opacity .4s ease .05s,transform .5s ease .05s}
+.page-veil.show .pv-mark{opacity:1;transform:none}
 
 /* Riflesso elegante sui bottoni */
 .btn{position:relative;overflow:hidden}
