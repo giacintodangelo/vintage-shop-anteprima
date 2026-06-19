@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opzioni Hero — Vintage Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",system-ui,sans-serif;--oro:#a8884e;--oro2:#c2a875}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:#100e0b;color:#ece7dd}
+.eb{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--oro2);font-weight:500}
+h1{font-family:var(--serif);font-weight:500;line-height:1.04}
+.ob{display:inline-block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:15px 32px;cursor:pointer;transition:.3s;border:1px solid;text-decoration:none}
+.ob.dark{border-color:#1b1a18;color:#1b1a18}.ob.dark:hover{background:#1b1a18;color:#f7f2e8}
+.ob.gold{border-color:var(--oro2);background:var(--oro2);color:#1b1a18}.ob.gold:hover{background:#b08d4f;border-color:#b08d4f}
+.ob.light{border-color:var(--oro2);color:#ece7dd}.ob.light:hover{background:var(--oro2);color:#1b1a18}
+
+/* intestazione demo */
+.demo-top{text-align:center;padding:48px 24px 12px}
+.demo-top .mk{font-family:var(--serif);font-size:30px;letter-spacing:6px}
+.demo-top p{color:#9c958a;margin-top:10px;font-size:14px}
+.opt{padding:18px clamp(14px,3vw,40px) 56px;max-width:1400px;margin:0 auto}
+.opt-label{display:flex;align-items:baseline;gap:12px;margin:34px 0 14px;font-family:var(--serif);font-size:26px;color:#f1ece2}
+.opt-label span{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#0c0b09;background:var(--oro2);padding:5px 11px;border-radius:999px}
+.opt-desc{color:#9c958a;font-size:14px;margin-top:14px;max-width:760px}
+.frame{border-radius:18px;overflow:hidden;border:1px solid #2a2620;box-shadow:0 30px 60px -30px #000}
+
+/* slideshow generico */
+.oslides{position:absolute;inset:0}
+.oslide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.oslide.on{opacity:1}
+
+/* ---------- Opzione 1: Vetrina Luminosa ---------- */
+.hero1{position:relative;min-height:72vh;display:grid;grid-template-columns:1.05fr 1fr;background:linear-gradient(135deg,#f8f3ea,#ece2cf)}
+.hero1 .txt{align-self:center;padding:56px clamp(28px,4.5vw,70px);color:#231f19}
+.hero1 h1{font-size:clamp(40px,5vw,70px);color:#1b1a18;margin:16px 0 18px}
+.hero1 h1 em{font-style:italic;color:#9a7b3f}
+.hero1 p{color:#5a5347;max-width:430px;margin-bottom:30px;font-size:17px;line-height:1.6}
+.hero1 .stage{position:relative;overflow:hidden;background:radial-gradient(circle at 55% 45%,#fffdf9,#efe6d4)}
+.hero1 .oslide img{width:100%;height:100%;object-fit:contain;padding:7%;
+  -webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 82%,transparent);mask-image:radial-gradient(closest-side at 50% 50%,#000 82%,transparent);
+  filter:drop-shadow(0 26px 30px rgba(70,55,30,.22));animation:floaty 7s ease-in-out infinite alternate}
+@keyframes floaty{from{transform:translateY(-6px)}to{transform:translateY(6px)}}
+
+/* ---------- Opzione 2: Split Editoriale ---------- */
+.hero2{display:grid;grid-template-columns:1fr 1fr;min-height:76vh}
+.hero2 .panel{background:#15130f;display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,4.5vw,74px);border-right:1px solid #2a2620}
+.hero2 h1{font-size:clamp(36px,4.4vw,62px);color:#f3ede2;margin:16px 0 18px}
+.hero2 h1 em{font-style:italic;color:var(--oro2)}
+.hero2 p{color:#bdb5a6;max-width:420px;margin-bottom:30px;font-size:16px;line-height:1.6}
+.hero2 .stage{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 42%,#fcf8f0,#e6ddca)}
+.hero2 .oslide img{width:100%;height:100%;object-fit:contain;padding:9%;
+  -webkit-mask-image:radial-gradient(closest-side at 50% 48%,#000 80%,transparent);mask-image:radial-gradient(closest-side at 50% 48%,#000 80%,transparent);
+  filter:drop-shadow(0 24px 30px rgba(60,45,25,.22))}
+
+/* ---------- Opzione 3: Mosaico Galleria ---------- */
+.hero3{min-height:72vh;display:grid;grid-template-columns:1fr 1.18fr;background:linear-gradient(135deg,#f7f2e8,#ebe0cd)}
+.hero3 .txt{align-self:center;padding:56px clamp(26px,4vw,60px);color:#231f19}
+.hero3 h1{font-size:clamp(36px,4.4vw,62px);color:#1b1a18;margin:16px 0 18px}
+.hero3 p{color:#5a5347;max-width:380px;margin-bottom:28px;font-size:16px;line-height:1.6}
+.hero3 .mosaic{padding:clamp(18px,2.6vw,38px);display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px}
+.hero3 .m{border-radius:14px;overflow:hidden;position:relative;background:#fff}
+.hero3 .m.big{grid-row:1 / span 2}
+.hero3 .m img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.hero3 .m:hover img{transform:scale(1.06)}
+
+/* ---------- Opzione 4: Spotlight Notturno ---------- */
+.hero4{position:relative;min-height:76vh;display:flex;align-items:center;background:#0b0a08;overflow:hidden}
+.hero4::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(closest-side at 64% 50%,rgba(200,172,120,.30),rgba(11,10,8,0) 62%)}
+.hero4 .oslides{z-index:1}
+.hero4 .oslide img{width:100%;height:100%;object-fit:contain;object-position:64% 50%;padding:4% 5%;opacity:.97;
+  -webkit-mask-image:radial-gradient(closest-side at 64% 50%,#000 60%,transparent);mask-image:radial-gradient(closest-side at 64% 50%,#000 60%,transparent);
+  filter:drop-shadow(0 22px 34px rgba(0,0,0,.55)) brightness(1.08) contrast(1.03);
+  animation:kb 12s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.09)}}
+.hero4 .txt{position:relative;z-index:2;color:#f1ece2;max-width:540px;padding:56px clamp(28px,5vw,70px)}
+.hero4 h1{font-size:clamp(40px,5vw,72px);margin:16px 0 18px}
+.hero4 h1 em{font-style:italic;color:var(--oro2)}
+.hero4 p{color:#c7bfb0;max-width:420px;margin-bottom:30px;font-size:17px;line-height:1.6}
+
+@media(max-width:860px){
+  .hero1,.hero2,.hero3{grid-template-columns:1fr}
+  .hero1 .stage,.hero2 .stage,.hero3 .mosaic{min-height:46vh}
+  .hero2 .panel{border-right:none;border-bottom:1px solid #2a2620}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-top">
+  <div class="mk">VINTAGE SHOP</div>
+  <p>Quattro proposte per la hero della homepage — scegli quella che preferisci e dimmi il numero. Poi la applico al sito.</p>
+</div>
+
+<!-- OPZIONE 1 -->
+<div class="opt">
+  <div class="opt-label"><span>Opzione 1</span> Vetrina Luminosa</div>
+  <div class="frame">
+    <div class="hero1">
+      <div class="txt">
+        <span class="eb">Maison d'antiquariato</span>
+        <h1>L'arte di <em>collezionare</em> la bellezza</h1>
+        <p>Mobili, cristalli e oggetti d'autore selezionati e restaurati a mano. Ogni pezzo ha una storia.</p>
+        <a class="ob dark" href="#">Esplora la collezione</a>
+      </div>
+      <div class="stage">
+        <div class="oslides">
+          <div class="oslide on"><img src="assets/col_vittoria.jpg" alt=""></div>
+          <div class="oslide"><img src="assets/big6.jpg" alt=""></div>
+          <div class="oslide"><img src="assets/m_specchio.jpg" alt=""></div>
+          <div class="oslide"><img src="assets/c_chamaleon.jpg" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="opt-desc"><b>Fondo chiaro luxury</b>, testo a sinistra, oggetto grande e luminoso a destra che cambia con leggera fluttuazione. Massima pulizia, mood "galleria bianca". Gli oggetti risaltano benissimo.</p>
+</div>
+
+<!-- OPZIONE 2 -->
+<div class="opt">
+  <div class="opt-label"><span>Opzione 2</span> Split Editoriale</div>
+  <div class="frame">
+    <div class="hero2">
+      <div class="panel">
+        <span class="eb">Dal 1990 · Paruzzaro</span>
+        <h1>Oggetti che <em>raccontano</em> una storia</h1>
+        <p>Antiquariato, modernariato e design. Selezione d'autore e restauro artigianale.</p>
+        <a class="ob light" href="#">Scopri il catalogo</a>
+      </div>
+      <div class="stage">
+        <div class="oslides">
+          <div class="oslide on"><img src="assets/m_camino.jpg" alt=""></div>
+          <div class="oslide"><img src="assets/big1.jpg" alt=""></div>
+          <div class="oslide"><img src="assets/col_vittoria.jpg" alt=""></div>
+          <div class="oslide"><img src="assets/big6.jpg" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="opt-desc"><b>Metà scura con testo, metà chiara con l'oggetto</b> illuminato a tutta altezza. Contrasto elegante e molto "brand di design". Equilibrio tra il mood scuro attuale e la luminosità.</p>
+</div>
+
+<!-- OPZIONE 3 -->
+<div class="opt">
+  <div class="opt-label"><span>Opzione 3</span> Mosaico Galleria</div>
+  <div class="frame">
+    <div class="hero3">
+      <div class="txt">
+        <span class="eb">La collezione</span>
+        <h1>Un mondo di pezzi unici</h1>
+        <p>Dal Novecento al collezionismo d'autore: una selezione viva, che cambia di continuo.</p>
+        <a class="ob dark" href="#">Vedi tutto</a>
+      </div>
+      <div class="mosaic">
+        <div class="m big"><img src="assets/col_vittoria.jpg" alt=""></div>
+        <div class="m"><img src="assets/big6.jpg" alt=""></div>
+        <div class="m"><img src="assets/m_specchio.jpg" alt=""></div>
+      </div>
+    </div>
+  </div>
+  <p class="opt-desc"><b>Testo + mosaico di immagini</b> (una grande e due piccole) con zoom morbido al passaggio. Dinamico ed editoriale, dà subito il senso della varietà della collezione.</p>
+</div>
+
+<!-- OPZIONE 4 -->
+<div class="opt">
+  <div class="opt-label"><span>Opzione 4</span> Spotlight Notturno</div>
+  <div class="frame">
+    <div class="hero4">
+      <div class="oslides">
+        <div class="oslide on"><img src="assets/col_vittoria.jpg" alt=""></div>
+        <div class="oslide"><img src="assets/big5.jpg" alt=""></div>
+        <div class="oslide"><img src="assets/m_specchio.jpg" alt=""></div>
+        <div class="oslide"><img src="assets/big6.jpg" alt=""></div>
+      </div>
+      <div class="txt">
+        <span class="eb">Dal laboratorio di Paruzzaro</span>
+        <h1>L'arte di <em>collezionare</em> la bellezza</h1>
+        <p>Ogni oggetto, illuminato come in una vetrina da museo. Selezione e restauro d'eccellenza.</p>
+        <a class="ob light" href="#">Esplora la collezione</a>
+      </div>
+    </div>
+  </div>
+  <p class="opt-desc"><b>Resta sul mood scuro "Museo"</b> ma con un <b>riflettore</b> che illumina l'oggetto: niente più foto spente, l'oggetto "buca" lo schermo. Coerente con lo stile attuale del sito, ma con molto più impatto.</p>
+</div>
+
+<div class="demo-top" style="padding-bottom:60px">
+  <p>👉 Dimmi il numero dell'opzione che preferisci (o un mix di idee) e la applico alla homepage.</p>
+</div>
+
+<script>
+  document.querySelectorAll('.oslides').forEach(function(box,bi){
+    var s=box.querySelectorAll('.oslide'); if(s.length<2) return;
+    var i=0;
+    setInterval(function(){ s[i].classList.remove('on'); i=(i+1)%s.length; s[i].classList.add('on'); }, 4200 + bi*350);
+  });
+</script>
+</body>
+</html>
