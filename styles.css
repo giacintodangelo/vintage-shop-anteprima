@@ -322,6 +322,50 @@ body.theme-museo .hero-slides .slide img{
 }
 .card .ph img{position:relative;z-index:2}
 
+/* =========================================================
+   DESIGN TOKENS — scala tipografica modulare + ritmo verticale
+   Voce del marchio: editoriale, sobria, elegante (maison d'antiquariato)
+   ========================================================= */
+:root{
+  --fs-eyebrow:12px;
+  --fs-xs:12.5px;
+  --fs-sm:14px;
+  --fs-base:clamp(15px, 0.45vw + 13.6px, 16.5px);
+  --fs-lead:clamp(16px, 0.6vw + 14px, 18.5px);
+  --fs-h3:clamp(19px, 1.1vw + 15px, 23px);
+  --fs-h2:clamp(30px, 3.4vw + 8px, 46px);
+  --fs-h1:clamp(34px, 4.2vw + 10px, 58px);
+  --fs-display:clamp(42px, 5.4vw + 14px, 76px);
+  --lh-tight:1.08;
+  --lh-snug:1.22;
+  --lh-base:1.68;
+  --ls-eyebrow:.34em;
+  --ls-label:.16em;
+  --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px;
+  --space-6:32px; --space-7:48px; --space-8:64px; --space-9:84px;
+  --section-y:clamp(64px, 7vw + 16px, 108px);
+  --measure:64ch;
+}
+
+/* --- Applicazione coerente dei token --- */
+body{font-size:var(--fs-base);line-height:var(--lh-base)}
+section.block{padding:var(--section-y) 0}
+.eyebrow{font-size:var(--fs-eyebrow);letter-spacing:var(--ls-eyebrow)}
+
+.section-head{margin-bottom:var(--space-8)}
+.section-head h2{font-size:var(--fs-h2);line-height:var(--lh-snug);margin:var(--space-3) 0 var(--space-4)}
+.section-head p{font-size:var(--fs-lead);line-height:1.55}
+
+.hero h1{font-size:var(--fs-display);line-height:var(--lh-tight)}
+.page-hero h1{font-size:var(--fs-h1);line-height:var(--lh-snug)}
+.story .txt h2,.news h2,.cta-band h2,.social h2{font-size:var(--fs-h2);line-height:var(--lh-snug)}
+
+.card h3,.service h3,.step-card h3{font-size:var(--fs-h3);line-height:var(--lh-snug)}
+.story .txt p,.lead-txt,.service p,.cta-band p,.social .lead{font-size:var(--fs-lead)}
+
+.story .txt p,.section-head p,.page-hero p,.cta-band p,.social .lead{max-width:var(--measure)}
+.section-head p,.cta-band p,.social .lead{margin-left:auto;margin-right:auto}
+
 /* Immagine storytelling: parallax leggero gestito via JS (--py) */
 .story .img-wrap img{transition:transform .2s ease-out}
 
