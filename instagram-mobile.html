@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@vintageshop — Anteprima mobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",-apple-system,system-ui,sans-serif;
+  --sub:#737373;--line:#dbdbdb;--oro2:#c2a875;--dark:#15130f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:radial-gradient(circle at 50% -5%,#221f19,#0d0c0a);color:#ece7dd;min-height:100vh}
+img{display:block}
+.head{text-align:center;padding:42px 20px 6px}
+.head .mk{font-family:var(--serif);font-size:28px;letter-spacing:6px;color:#f1ece2}
+.head p{color:#9c958a;font-size:14px;margin-top:8px}
+.stage{display:flex;gap:54px;justify-content:center;align-items:flex-start;flex-wrap:wrap;padding:36px 20px 80px}
+.cell{text-align:center}
+.cap{margin-top:18px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--oro2)}
+
+.phone{width:384px;max-width:92vw;height:812px;background:#0a0908;border-radius:50px;padding:11px;
+  box-shadow:0 46px 100px -34px #000,inset 0 0 0 2px #2c2820;position:relative}
+.screen{width:100%;height:100%;background:#fff;border-radius:40px;overflow:hidden;position:relative;color:#262626}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:31px;background:#000;border-radius:16px;z-index:60}
+.scroll{height:100%;overflow-y:auto;overflow-x:hidden}
+.scroll::-webkit-scrollbar{display:none}
+
+.status{display:flex;justify-content:space-between;align-items:center;padding:15px 26px 6px;font-size:14px;font-weight:600;color:#000}
+.status .r{letter-spacing:1px}
+.app-top{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;border-bottom:.5px solid #efefef}
+.app-top .u{display:flex;align-items:center;gap:6px;font-size:20px;font-weight:600}
+.app-top .ic{display:flex;gap:18px;font-size:21px}
+
+.phead{display:flex;align-items:center;gap:24px;padding:18px 18px 6px}
+.av-ring{flex:none;width:86px;height:86px;border-radius:50%;padding:3px;
+  background:conic-gradient(from 30deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5,#feda75)}
+.av{width:100%;height:100%;border-radius:50%;background:var(--dark);border:2px solid #fff;display:flex;align-items:center;justify-content:center}
+.av svg{width:54px;height:54px}
+.pst{flex:1;display:flex;justify-content:space-around;text-align:center}
+.pst b{display:block;font-size:18px;font-weight:600}
+.pst span{font-size:13px;color:#262626}
+.pbio{padding:4px 18px 0;font-size:14px;line-height:1.45}
+.pbio .nm{font-weight:600}
+.pbio .lk{color:#00376b;font-weight:600}
+.pbtns{display:flex;gap:7px;padding:14px 18px 6px}
+.pbtns button{font-family:var(--sans);font-weight:600;font-size:14px;border:none;border-radius:9px;padding:8px 0;cursor:pointer}
+.pbtns .follow{flex:1;background:#0095f6;color:#fff}
+.pbtns .msg{flex:1;background:#efefef;color:#262626}
+.pbtns .add{background:#efefef;color:#262626;width:40px}
+
+.hls{display:flex;gap:18px;padding:14px 18px;overflow-x:auto}
+.hls::-webkit-scrollbar{display:none}
+.hl{flex:none;width:66px;text-align:center}
+.hl .r{width:66px;height:66px;border-radius:50%;padding:2px;border:1px solid var(--line);background:#fff}
+.hl .r .in{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--dark);display:flex;align-items:center;justify-content:center}
+.hl .r img{width:100%;height:100%;object-fit:cover}
+.hl .r .em{font-family:var(--serif);font-size:24px;color:var(--oro2)}
+.hl span{display:block;margin-top:6px;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.ptabs{display:flex;border-top:.5px solid #efefef}
+.ptabs div{flex:1;text-align:center;padding:11px 0;font-size:20px;color:#bbb;border-top:1px solid transparent;margin-top:-1px}
+.ptabs div.on{color:#262626;border-top-color:#262626}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding-bottom:64px}
+.pp{position:relative;aspect-ratio:1/1;overflow:hidden;background:#fff}
+.pp img{width:100%;height:100%;object-fit:contain;padding:9%}
+.pp.gr{background:radial-gradient(circle at 50% 38%,#1f1c17,#0f0e0b);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;color:#ece7dd}
+.pp.gr .eb{font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--oro2);margin-bottom:5px}
+.pp.gr .t{font-family:var(--serif);font-size:15px;line-height:1.15;font-weight:500}
+.pp.gr .t em{font-style:italic;color:var(--oro2)}
+
+.pnav{position:absolute;bottom:0;left:0;right:0;height:54px;background:#fff;border-top:.5px solid #efefef;
+  display:flex;align-items:center;justify-content:space-around;font-size:22px;color:#262626}
+.pnav .me{width:26px;height:26px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center}
+.pnav .me svg{width:20px;height:20px}
+
+.story{position:absolute;inset:0;background:#000;border-radius:40px;overflow:hidden}
+.story>img{width:100%;height:100%;object-fit:cover;opacity:.92}
+.story .grad-t{position:absolute;top:0;left:0;right:0;height:130px;background:linear-gradient(#0009,transparent)}
+.story .grad-b{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(transparent,#000a)}
+.story .bars{position:absolute;top:46px;left:14px;right:14px;display:flex;gap:5px;z-index:3}
+.story .bars i{flex:1;height:2.5px;background:#ffffff55;border-radius:3px;overflow:hidden}
+.story .bars i.done{background:#fff}
+.story .bars i.cur::after{content:"";display:block;height:100%;width:55%;background:#fff}
+.story .sh{position:absolute;top:58px;left:16px;right:16px;display:flex;align-items:center;gap:10px;z-index:3;color:#fff}
+.story .sh .a{width:34px;height:34px;border-radius:50%;background:var(--dark);border:1px solid #ffffff66;display:flex;align-items:center;justify-content:center}
+.story .sh .a svg{width:24px;height:24px}
+.story .sh b{font-size:14px;font-weight:600}
+.story .sh .tm{font-size:13px;opacity:.85}
+.story .sh .x{margin-left:auto;font-size:22px}
+.story .sticker{position:absolute;top:32%;left:50%;transform:translate(-50%,-50%) rotate(-4deg);z-index:3;
+  background:#fffffff2;color:#1b1a18;padding:18px 26px;border-radius:10px;text-align:center;box-shadow:0 14px 30px #0007}
+.story .sticker .eb{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#a8884e}
+.story .sticker .t{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.1;margin-top:6px}
+.story .sticker .pz{font-size:12px;color:#6a6256;margin-top:6px;letter-spacing:.04em}
+.story .price{position:absolute;top:54%;left:50%;transform:translateX(-50%);z-index:3;
+  background:#a8884e;color:#1b1a18;font-weight:600;font-size:13px;letter-spacing:.04em;padding:8px 16px;border-radius:999px}
+.story .foot{position:absolute;bottom:20px;left:16px;right:16px;display:flex;align-items:center;gap:12px;z-index:3}
+.story .foot .inp{flex:1;border:1px solid #ffffff88;border-radius:999px;padding:11px 16px;color:#fff;font-size:14px}
+.story .foot .ic{color:#fff;font-size:23px}
+</style>
+</head>
+<body>
+
+<div class="head">
+  <div class="mk">VINTAGE SHOP</div>
+  <p>Anteprima mobile — come apparirebbe il profilo e una Storia sul telefono</p>
+</div>
+
+<div class="stage">
+
+  <!-- TELEFONO 1: PROFILO -->
+  <div class="cell">
+    <div class="phone">
+      <div class="island"></div>
+      <div class="screen">
+        <div class="scroll">
+          <div class="status"><span>9:41</span><span class="r">5G &nbsp; ▮▮▮▮</span></div>
+          <div class="app-top">
+            <div class="u">🔒 vintageshop ▾</div>
+            <div class="ic">＋ &nbsp; ☰</div>
+          </div>
+
+          <div class="phead">
+            <div class="av-ring"><div class="av">
+              <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#c2a875" stroke-width="2"/><circle cx="32" cy="32" r="22" fill="none" stroke="#c2a875" stroke-width="1" opacity=".5"/><text x="32" y="41" text-anchor="middle" font-family="Cormorant Garamond,serif" font-weight="600" font-size="24" fill="#dac49b">VS</text></svg>
+            </div></div>
+            <div class="pst">
+              <div><b>1.248</b><span>post</span></div>
+              <div><b>18,4&nbsp;mila</b><span>follower</span></div>
+              <div><b>312</b><span>seguiti</span></div>
+            </div>
+          </div>
+          <div class="pbio">
+            <div class="nm">Vintage Shop · Antiquariato & Design</div>
+            🏛️ Antiquariato · Modernariato · Design<br>
+            ✦ Restauro artigianale — Eccellenza Artigiana<br>
+            📍 Paruzzaro (NO) · Spedizioni nel mondo<br>
+            <span class="lk">vintage-shop.it</span>
+          </div>
+          <div class="pbtns">
+            <button class="follow">Segui</button>
+            <button class="msg">Messaggio</button>
+            <button class="add">+</button>
+          </div>
+
+          <div class="hls">
+            <div class="hl"><div class="r"><div class="in"><span class="em">✦</span></div></div><span>Novità</span></div>
+            <div class="hl"><div class="r"><div class="in"><img src="assets/p1.jpg" alt=""></div></div><span>Restauri</span></div>
+            <div class="hl"><div class="r"><div class="in"><img src="assets/big2.jpg" alt=""></div></div><span>Cristalli</span></div>
+            <div class="hl"><div class="r"><div class="in"><img src="assets/m_camino.jpg" alt=""></div></div><span>Mobili</span></div>
+            <div class="hl"><div class="r"><div class="in"><img src="assets/col_vittoria.jpg" alt=""></div></div><span>Bottega</span></div>
+          </div>
+
+          <div class="ptabs"><div class="on">▦</div><div>▷</div><div>⌖</div></div>
+          <div class="pgrid">
+            <div class="pp"><img src="assets/col_vittoria.jpg" alt=""></div>
+            <div class="pp gr"><div class="eb">Storie degli oggetti</div><div class="t">Arnolfo<br><em>di Cambio</em></div></div>
+            <div class="pp"><img src="assets/big6.jpg" alt=""></div>
+            <div class="pp"><img src="assets/m_camino.jpg" alt=""></div>
+            <div class="pp gr"><div class="eb">Nuovo arrivo</div><div class="t"><em>Calici</em><br>Toledo '70</div></div>
+            <div class="pp"><img src="assets/big2.jpg" alt=""></div>
+            <div class="pp"><img src="assets/m_specchio.jpg" alt=""></div>
+            <div class="pp gr"><div class="t">"Si <em>restaura</em><br>la bellezza"</div></div>
+            <div class="pp"><img src="assets/big5.jpg" alt=""></div>
+            <div class="pp"><img src="assets/c_chamaleon.jpg" alt=""></div>
+            <div class="pp"><img src="assets/big1.jpg" alt=""></div>
+            <div class="pp gr"><div class="eb">Servizi</div><div class="t"><em>Valutazioni</em><br>gratuite</div></div>
+          </div>
+        </div>
+        <div class="pnav">
+          <span>⌂</span><span>⌕</span><span>＋</span><span>▷</span>
+          <span class="me"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="#c2a875" stroke-width="3"/><text x="32" y="42" text-anchor="middle" font-family="Cormorant Garamond,serif" font-weight="600" font-size="26" fill="#dac49b">VS</text></svg></span>
+        </div>
+      </div>
+    </div>
+    <div class="cap">Profilo</div>
+  </div>
+
+  <!-- TELEFONO 2: STORIA -->
+  <div class="cell">
+    <div class="phone">
+      <div class="island"></div>
+      <div class="screen">
+        <div class="story">
+          <img src="assets/big6.jpg" alt="">
+          <div class="grad-t"></div><div class="grad-b"></div>
+          <div class="bars"><i class="done"></i><i class="cur"></i><i></i><i></i></div>
+          <div class="sh">
+            <span class="a"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="#c2a875" stroke-width="3"/><text x="32" y="42" text-anchor="middle" font-family="Cormorant Garamond,serif" font-weight="600" font-size="26" fill="#dac49b">VS</text></svg></span>
+            <b>vintageshop</b><span class="tm">2 h</span><span class="x">✕</span>
+          </div>
+          <div class="sticker">
+            <div class="eb">Nuovo arrivo ✦</div>
+            <div class="t">Vaso Bertoncello</div>
+            <div class="pz">Ceramica · anni '70</div>
+          </div>
+          <div class="price">€ 216 · disponibile</div>
+          <div class="foot">
+            <div class="inp">Invia un messaggio…</div>
+            <span class="ic">♡</span><span class="ic">✈</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cap">Storia</div>
+  </div>
+
+</div>
+</body>
+</html>
