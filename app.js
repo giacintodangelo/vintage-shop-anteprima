@@ -226,7 +226,7 @@
     // Servizi
     document.querySelectorAll('.service .ic').forEach(function (ic) {
       var h = txt(ic.parentElement, 'h3');
-      ic.innerHTML = pick(h, { 'valutazion': I.gem, 'acquisto': I.cash, 'ritiro': I.cash, 'restauro': I.brush, 'noleggio': I.tag, 'virtual': I.cube, 'tour': I.cube, 'spedizion': I.globe }, I.seal);
+      ic.innerHTML = pick(h, { 'valutazion': I.gem, 'acquisto': I.cash, 'ritiro': I.cash, 'restauro': I.brush, 'noleggio': I.tag, 'virtual': I.cube, 'tour': I.cube, 'spedizion': I.globe, 'mondo': I.globe, 'imballo': I.cube, 'tempi': I.clock, 'garanz': I.seal }, I.seal);
     });
 
     // Contatti
@@ -251,6 +251,22 @@
   document.querySelectorAll('a[href="catalogo.html"]').forEach(function (a) {
     var k = a.textContent.trim().toLowerCase();
     if (catMap[k]) a.setAttribute('href', 'catalogo.html?cat=' + catMap[k]);
+  });
+
+  /* ---- FAQ accordion (home / spedizioni) ---- */
+  document.querySelectorAll('.faq-q').forEach(function (q) {
+    q.addEventListener('click', function () { q.parentElement.classList.toggle('open'); });
+  });
+
+  /* ---- Link nuove pagine nel footer (colonna Servizi) ---- */
+  document.querySelectorAll('.site-footer .footer-grid > div').forEach(function (col) {
+    var h = col.querySelector('h4');
+    if (h && h.textContent.toLowerCase().indexOf('serviz') >= 0) {
+      var ul = col.querySelector('ul');
+      if (ul) ul.insertAdjacentHTML('beforeend',
+        '<li><a href="spedizioni.html">Spedizioni & resi</a></li>' +
+        '<li><a href="storie.html">Storie degli oggetti</a></li>');
+    }
   });
 
   /* ---- Menu mobile (condiviso) ---- */
