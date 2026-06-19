@@ -279,6 +279,55 @@
     });
   }
 
+  /* ---- Accessibilità ---- */
+  (function () {
+    // Skip link → primo contenuto dopo l'header
+    var header = document.querySelector('.site-header');
+    var main = header && header.nextElementSibling;
+    if (main) {
+      if (!main.id) main.id = 'main';
+      main.setAttribute('tabindex', '-1');
+      var sk = document.createElement('a');
+      sk.className = 'skip-link';
+      sk.href = '#' + main.id;
+      sk.textContent = 'Salta al contenuto';
+      sk.addEventListener('click', function (e) { e.preventDefault(); main.focus(); main.scrollIntoView(); });
+      document.body.insertBefore(sk, document.body.firstChild);
+    }
+    // Etichette per i controlli con sola icona
+    document.querySelectorAll('.icon-btn,.foot-social a').forEach(function (el) {
+      var t = el.getAttribute('title');
+      if (t && !el.getAttribute('aria-label')) el.setAttribute('aria-label', t);
+    });
+    document.querySelectorAll('.lang').forEach(function (el) {
+      if (!el.getAttribute('aria-label')) el.setAttribute('aria-label', 'Cambia lingua del sito');
+    });
+    // aria-expanded su accordion (FAQ + scheda prodotto)
+    document.querySelectorAll('.faq-q,.acc-head').forEach(function (b) {
+      var item = b.parentElement;
+      var sync = function () { b.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false'); };
+      sync();
+      b.addEventListener('click', function () { setTimeout(sync, 0); });
+    });
+    // Menu mobile
+    var bg = document.getElementById('burger'), mn = document.getElementById('mobileNav');
+    if (bg && mn) {
+      bg.setAttribute('aria-controls', 'mobileNav');
+      bg.setAttribute('aria-expanded', 'false');
+      bg.addEventListener('click', function () {
+        bg.setAttribute('aria-expanded', mn.classList.contains('open') ? 'true' : 'false');
+      });
+    }
+    // Campi form → aria-label dalla rispettiva etichetta visibile
+    document.querySelectorAll('.field').forEach(function (f) {
+      var lab = f.querySelector('label'), inp = f.querySelector('input,textarea');
+      if (lab && inp && !inp.getAttribute('aria-label')) inp.setAttribute('aria-label', lab.textContent.trim());
+    });
+    document.querySelectorAll('.news input').forEach(function (i) {
+      if (!i.getAttribute('aria-label')) i.setAttribute('aria-label', 'La tua email');
+    });
+  })();
+
   /* ---- Transizione morbida tra le pagine (velo scuro in uscita) ---- */
   if (!reduce) {
     var veil = document.createElement('div');

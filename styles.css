@@ -449,6 +449,21 @@ body{animation:pageFade .55s ease both}
   .btn::after{display:none}
 }
 
+/* =========================================================
+   Accessibilità — focus visibile, skip link, utilità
+   ========================================================= */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
+select:focus-visible,[tabindex]:focus-visible{
+  outline:2px solid var(--oro-chiaro);outline-offset:3px;border-radius:4px;
+}
+.skip-link{position:absolute;left:12px;top:-64px;z-index:400;background:var(--oro);color:#1b1a18;
+  padding:11px 18px;border-radius:6px;font-size:13px;letter-spacing:.06em;text-decoration:none;
+  transition:top .25s ease}
+.skip-link:focus{top:12px;outline:none}
+#main:focus{outline:none}
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
 /* Immagine storytelling: parallax leggero gestito via JS (--py) */
 .story .img-wrap img{transition:transform .2s ease-out}
 
